@@ -15,3 +15,22 @@ __pycache__/
 *.pyc
 .pytest_cache/
 jieba.cache
+
+# 书本配套源码保留在本地，本仓库只放笔记
+/agentic-rag/
+/agentic-rag-for-user-memory/
+/contextual-retrieval/
+/contextual-retrieval-for-user-memory/
+/dense-embedding/
+/log-sanitization/
+/mem0/
+/memobase/
+/retrieval-pipeline/
+/sparse-embedding/
+/structured-index/
+/structured-knowledge-extraction/
+/user-memory/
+/user-memory-evaluation/
+/README.*.md
+/EXPERIMENT_LEDGER.md
+/start_all_services.sh

@@ -1,0 +1,60 @@
+{
+  "user_id": "quickstart_user",
+  "type": "notes",
+  "updated_at": "2026-10-17T19:15:31.108641",
+  "notes": [
+    {
+      "note_id": "e968af6a-57db-4312-bd52-f1c9363e037d",
+      "content": "User's name is Alex",
+      "session_id": "session-cf5e5741",
+      "created_at": "2026-10-17T19:11:30.854864",
+      "updated_at": "2026-10-17T19:11:30.854869",
+      "tags": [
+        "identity"
+      ]
+    },
+    {
+      "note_id": "df3601a1-940c-48ab-9d57-6e581d353b79",
+      "content": "Alex is a software developer",
+      "session_id": "session-cf5e5741",
+      "created_at": "2026-10-17T19:11:30.856986",
+      "updated_at": "2026-10-17T19:11:30.856991",
+      "tags": [
+        "profession"
+      ]
+    },
+    {
+      "note_id": "fc6a23e6-991f-4bae-9adc-b4dd7f4dfa69",
+      "content": "Alex loves Python and machine learning",
+      "session_id": "session-cf5e5741",
+      "created_at": "2026-10-17T19:11:30.860008",
+      "updated_at": "2026-10-17T19:11:30.860013",
+      "tags": [
+        "interests",
+        "programming"
+      ]
+    },
+    {
+      "note_id": "1b07b649-d18a-4ee9-8613-894de437e2d8",
+      "content": "Alex moved from Beijing to Shanghai last month and now lives in Shanghai",
+      "session_id": "session-6e1e0d96",
+      "created_at": "2026-10-17T19:14:14.152616",
+      "updated_at": "2026-10-17T19:14:14.152625",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "note_id": "beba3b40-b166-47ba-bd3e-2f6d04bf4243",
+      "content": "Alex switched from PyTorch to JAX as their primary ML framework for better performance",
+      "session_id": "session-6e1e0d96",
+      "created_at": "2026-10-17T19:15:31.107345",
+      "updated_at": "2026-10-17T19:15:31.107353",
+      "tags": [
+        "tools",
+        "programming",
+        "preferences"
+      ]
+    }
+  ]
+}
