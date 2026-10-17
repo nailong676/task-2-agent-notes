@@ -78,6 +78,41 @@ Rerank: #1 xr_7003 (7.24)              ← 稳居第 1
 - `test_client.py` 五组教学用例全部符合预期：语义/跨语言 dense 胜，精确码/人名 sparse 胜，hybrid 全部 100%
 - `demo.py` 6 条查询（API key、概念、404、跨语言、人名、语义上下文）hybrid+rerank top1 全对
 
+### 两条数据流程图（RAG 主线）
+
+**流程一：文档如何变得可检索（离线建库）**
+
+```
+原始文档
+  → 字符窗口切分（chunk_size=280, overlap=40；20 篇 → 22 块）
+  → 双路表示：
+    ├── 稀疏路：分词 → 倒排索引（term → doc 集合，BM25 统计 DF/TF/文档长度）
+    └── 稠密路：Embedding 模型（MiniLM-L6-v2 / bge-m3）→ 向量 → 索引（FlatIndex 暴力余弦）
+```
+
+**流程二：提问后如何检索并回答（在线查询）**
+
+```
+query
+  → 并行两路召回：BM25 top-k ＋ dense top-k（各自候选列表）
+  → RRF 融合（按排名倒数融合，不看分数尺度）
+  → bge-reranker 精排（query-候选对逐一打分）
+  → top 证据块注入 prompt 上下文
+  → LLM 基于证据生成回答
+```
+
+**记忆线：一次偏好更新的全程追踪（user-memory 实证）**
+
+```
+用户说"我搬到了上海"
+  → 对话 Agent 正常应答（本轮不被打断）
+  → 后台记忆处理器读取最近会话 → LLM 决策操作类型
+  → 无旧城市事实 → ADD 新笔记（若有旧值则 UPDATE）
+  → 写入 data/memories/*.json（content + tags + created_at/updated_at + session_id）
+  → 下次会话开启时笔记注入 Agent 上下文
+  → 问"我住哪个城市" → 回答"上海"（实证通过）
+```
+
 ### 要点
 - 没有单一最优；混合通常更好；RRF 对分数尺度不敏感，weighted 融合要注意两路分数尺度
 - **重排不保证总比融合好**——候选已全对时它只可能重序；判断重排增益要用更大候选集
